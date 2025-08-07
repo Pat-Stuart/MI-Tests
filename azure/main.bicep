@@ -72,6 +72,7 @@ module sqlServerModule 'modules/sql-server.bicep' = {
   params: {
     environment: environment
     appServicePrincipalId: appServiceModule.outputs.appServicePrincipalId
+    appServiceName: 'PS-Api-${environment}'
   }
 }
 

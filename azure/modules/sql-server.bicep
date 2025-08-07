@@ -2,6 +2,7 @@
 param environment string
 
 param appServicePrincipalId string
+param appServiceName string
 
 var location string = resourceGroup().location
 
@@ -34,7 +35,7 @@ resource aadAdmin 'Microsoft.Sql/servers/administrators@2024-11-01-preview' = {
   name: 'ActiveDirectory'
   properties: {
     administratorType: 'ActiveDirectory'
-    login: appServicePrincipalId
+    login: appServiceName
     sid: appServicePrincipalId
     tenantId: subscription().tenantId
   }
