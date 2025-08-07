@@ -7,7 +7,7 @@ param appServiceName string
 var location string = resourceGroup().location
 
 resource sqlServer 'Microsoft.Sql/servers@2024-11-01-preview' = {
-  name: 'WebApiSqlServer-${environment}'
+  name: 'WebApiSqlServer-${environment}-${appServiceName}'
   location: location
   properties: {
     administratorLogin: 'sqlAdmin'
