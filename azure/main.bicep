@@ -5,7 +5,7 @@ targetScope = 'subscription'
 param environment string
 
 // Fixed configuration values
-var resourceGroupName = 'LC.Api'
+var resourceGroupName = 'PS.Api'
 var location = 'australiaeast'
 var fullResourceGroupName = '${resourceGroupName}.${environment}'
 
@@ -29,7 +29,7 @@ module appServicePlanModule 'modules/app-service-plan.bicep' = {
     resourceGroupModule
   ]
   params: {
-    name: 'LC-Api-Plan-${environment}'
+    name: 'PS-Api-Plan-${environment}'
   }
 }
 
@@ -42,7 +42,7 @@ module appServiceModule 'modules/app-service.bicep' = {
     resourceGroupModule
   ]
   params: {
-    name: 'LC-Api-${environment}'
+    name: 'PS-Api-${environment}'
     appServicePlanId: appServicePlanModule.outputs.appServicePlanId
   }
 }
@@ -57,7 +57,7 @@ module keyVaultModule 'modules/key-vault.bicep' = {
   ]
   params: {
     appServicePrincipalId: appServiceModule.outputs.appServicePrincipalId
-    keyVaultName: 'LC-Api-KV-${environment}'
+    keyVaultName: 'PS-Api-KV-${environment}'
   }
 }
 
